@@ -1,4 +1,4 @@
-package hero
+package routes
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func GetRoot(w http.ResponseWriter, r *http.Request) {
+func getRoot(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	w.Header().Set("Content-Type", "application/json")
 	resp := make(map[string]string)
@@ -19,7 +19,7 @@ func GetRoot(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResp)
 }
 
-func GetHero(w http.ResponseWriter, r *http.Request) {
+func getHero(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	w.Header().Set("Content-Type", "application/json")
 	resp := make(map[string]string)
@@ -30,4 +30,9 @@ func GetHero(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
 	}
 	w.Write(jsonResp)
+}
+
+func Serve() {
+	http.HandleFunc("/", getRoot)
+	http.HandleFunc("/hero", getHero)
 }

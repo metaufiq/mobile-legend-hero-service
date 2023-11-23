@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github/metaufiq/mobile-legend-hero-service/src/hero"
+	routes "github/metaufiq/mobile-legend-hero-service/src/presentation"
 	"net/http"
 	"os"
 	"strings"
@@ -13,14 +13,13 @@ import (
 
 func main() {
 	godotenv.Load()
+	routes.Serve()
 
 	fmt.Printf("\n[ENV VARIABLES]\n")
 	for _, e := range os.Environ() {
 		pair := strings.SplitN(e, "=", 2)
 		fmt.Printf("%s: %s\n", pair[0], pair[1])
 	}
-	http.HandleFunc("/", hero.GetRoot)
-	http.HandleFunc("/hero", hero.GetHero)
 
 	fmt.Printf("\n\nserver running...\n\n")
 	err := http.ListenAndServe(":8080", nil)
