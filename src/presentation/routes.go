@@ -1,38 +1,25 @@
-package routes
+package presentation
 
 import (
-	"encoding/json"
-	"log"
+	"github/metaufiq/mobile-legend-hero-service/src/common"
 	"net/http"
 )
 
 func getRoot(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusCreated)
-	w.Header().Set("Content-Type", "application/json")
 	resp := make(map[string]string)
 	resp["data"] = "this is root page, to get heroes data you can access /hero"
 
-	jsonResp, err := json.Marshal(resp)
-	if err != nil {
-		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
-	}
-	w.Write(jsonResp)
+	common.CreateJSONResponse(w, resp)
 }
 
 func getHero(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusCreated)
-	w.Header().Set("Content-Type", "application/json")
 	resp := make(map[string]string)
 	resp["data"] = "not available"
 
-	jsonResp, err := json.Marshal(resp)
-	if err != nil {
-		log.Fatalf("Error happened in JSON marshal. Err: %s", err)
-	}
-	w.Write(jsonResp)
+	common.CreateJSONResponse(w, resp)
 }
 
-func Serve() {
+func ServeRoutes() {
 	http.HandleFunc("/", getRoot)
 	http.HandleFunc("/hero", getHero)
 }

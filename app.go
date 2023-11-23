@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	routes "github/metaufiq/mobile-legend-hero-service/src/presentation"
+	"github/metaufiq/mobile-legend-hero-service/src/presentation"
 	"net/http"
 	"os"
 	"strings"
@@ -13,7 +13,7 @@ import (
 
 func main() {
 	godotenv.Load()
-	routes.Serve()
+	presentation.ServeRoutes()
 
 	fmt.Printf("\n[ENV VARIABLES]\n")
 	for _, e := range os.Environ() {
