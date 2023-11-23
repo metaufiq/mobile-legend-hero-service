@@ -1,2 +1,2 @@
 run:
-	go run src/cmd/app.go
+	go run app.go
