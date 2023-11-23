@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github/metaufiq/mobile-legend-hero-service/src/common"
 	"github/metaufiq/mobile-legend-hero-service/src/presentation"
 	"net/http"
 	"os"
@@ -13,6 +14,7 @@ import (
 
 func main() {
 	godotenv.Load()
+	common.InnitDB()
 	presentation.ServeRoutes()
 
 	fmt.Printf("\n[ENV VARIABLES]\n")
