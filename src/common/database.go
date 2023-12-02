@@ -3,7 +3,6 @@ package common
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 
 	_ "github.com/lib/pq"
@@ -31,7 +30,7 @@ func InnitDB() *sql.DB {
 
 	if err != nil {
 		fmt.Printf("\nfound an error when try to connect to database:\n")
-		log.Fatal(err)
+		fmt.Printf(err.Error())
 		fmt.Print("\n")
 	}
 
