@@ -30,7 +30,7 @@ func InnitDB() *sql.DB {
 
 	if err != nil {
 		fmt.Printf("\nfound an error when try to connect to database:\n")
-		fmt.Printf(err.Error())
+		fmt.Print(err.Error())
 		fmt.Print("\n")
 	}
 
